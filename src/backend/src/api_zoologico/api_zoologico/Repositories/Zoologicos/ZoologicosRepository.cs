@@ -42,13 +42,13 @@ public class ZoologicosRepository : IZoologicosRepository
             .Include(z => z.Especie)
             .FirstOrDefaultAsync(z => z.Id == zoo.Id);
         
-        zoo.Nombre = zoologico.Nombre;
-        zoo.Ciudad = zoologico.Ciudad;
-        zoo.Tamanio = zoologico.Tamanio;
-        zoo.PresupuestoAnual = zoologico.PresupuestoAnual;
-        zoo.AnioNacimiento = zoologico.AnioNacimiento;
-        zoo.PaisDeOrigen = zoologico.PaisDeOrigen;
-        zoo.Continente = zoologico.Continente;
+        zoologico.Nombre = zoo.Nombre;
+        zoologico.Ciudad = zoo.Ciudad;
+        zoologico.Tamanio = zoo.Tamanio;
+        zoologico.PresupuestoAnual = zoo.PresupuestoAnual;
+        zoologico.AnioNacimiento = zoo.AnioNacimiento;
+        zoologico.PaisDeOrigen = zoo.PaisDeOrigen;
+        zoologico.Continente = zoo.Continente;
 
         _contextDb.Update(zoologico);
         _contextDb.SaveChanges();

@@ -33,4 +33,18 @@ public class ZoologicosController : Controller
         var response = await _zoologicosService.PostZoo(query);
         return Ok(response);
     }
+
+    [HttpPut("zoologicos/UpdateZoo")]
+    public async Task<IActionResult> UpdateZoologico([FromBody] UpdateZoologicoQuery query)
+    {
+        var response = await _zoologicosService.UpdateZoo(query);
+        return Ok(response);
+    }
+
+    [HttpDelete("zoologicos/DeleteZoo")]
+    public async Task<IActionResult> DeleteZoo(Guid id)
+    {
+        var response = await _zoologicosService.DeleteZoo(id);
+        return Ok(response);
+    }
 }

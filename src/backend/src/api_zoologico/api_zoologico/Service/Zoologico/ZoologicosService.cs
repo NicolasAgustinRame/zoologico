@@ -91,4 +91,47 @@ public class ZoologicosService : IZoologicosService
         response.Data = _mapper.Map<ZooDto>(newZoologico);
         return response;
     }
+
+    public async Task<ApiResponse<ZooDto>> UpdateZoo(UpdateZoologicoQuery query)
+    {
+        var response = new ApiResponse<ZooDto>();
+        var zoologico = await _zoologicosRepository.GetById(query.Id);
+        if (zoologico == null)
+        {
+            response.SetError("El zoologico no existe", HttpStatusCode.BadRequest);
+            return response;
+        }
+
+        var updateZoologico = new Zoologicos()
+        {
+            Id = query.Id,
+            Nombre = query.Nombre,
+            Ciudad = query.Ciudad,
+            Tamanio = query.Tamanio,
+            PresupuestoAnual = query.PresupuestoAnual,
+            AnioNacimiento = query.AnioNacimiento,
+            PaisDeOrigen = query.PaisDeOrigen,
+            Continente = query.Continente
+        };
+
+        await _zoologicosRepository.UpdateZoologico(updateZoologico);
+        response.Data = _mapper.Map<ZooDto>(updateZoologico);
+        return response;
+    }
+
+    public async Task<ApiResponse<ZooDto>> DeleteZoo(Guid id)
+    {
+        var response = new ApiResponse<ZooDto>();
+        var zoologico = await _zoologicosRepository.GetById(id);
+        if (zoologico == null)
+        {
+            response.SetError("El zoologico no existe", HttpStatusCode.BadRequest);
+            return response;
+        }
+
+        zoologico = await _zoologicosRepository.DeletaZoologico(id);
+        response.Data = _mapper.Map<ZooDto>(zoologico);
+        return response;
+
+    }
 }
