@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "IcBgqwqFGXaBjGIiSxes1yHSGHhMW3clGVhvPMNGTO8=",
+  "Source": "api_zoologico",
+  "BasePath": "_content/api_zoologico",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
